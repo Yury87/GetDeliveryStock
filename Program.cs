@@ -18,7 +18,9 @@ namespace GetDeliveryStock
             { 
             List<PharmaHelper> lst = ConnectMS("SELECT * FROM [AptStocs].[dbo].[vw_Stock] where apt = 26 and MedName like '%Линза%' or apt = 26 and tkrid=225011");
             List<SFHelper> list = ConnectMSIshop("SELECT * FROM [AptStocs].[dbo].[vw_Stock] where apt = 26 and MedName like '%Линза%' or apt = 26 and tkrid=225011");
+            // Генерациия xml для нового сайта
             MakeXMLFilePharma(lst);
+            // Генерациия xml для старого сайта
             MakeXMLFileSF(list);
             }
         }
@@ -26,6 +28,7 @@ namespace GetDeliveryStock
 
         static int ConnectMSCount(string sql)
         {
+
             int i = 0;
             string MSConnectionStr = "data source=192.168.1.39;persist security info=True;" +
                 "user id=ftp;password=Sekret123;" +
